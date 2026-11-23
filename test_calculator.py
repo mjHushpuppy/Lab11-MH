@@ -1,4 +1,4 @@
-# https://github.com/mjHushpuppy/lab11-MH
+# https://github.com/mjHushpuppy/Lab11-MH
 # Partner 1: Michael Hushebeck
 # Partner 2: Michael Hushebeck
 
@@ -24,12 +24,15 @@ class TestCalculator(unittest.TestCase):
     def test_logarithm(self):
         self.assertAlmostEqual(logarithm(2, 8), 3.0)
         self.assertAlmostEqual(logarithm(10, 100), 2.0)
+        self.assertAlmostEqual(logarithm(3, 9), 2.0)
 
     def test_log_invalid_base(self):
         with self.assertRaises(ValueError):
             logarithm(1, 10)
         with self.assertRaises(ValueError):
             logarithm(-2, 8)
+        with self.assertRaises(ValueError):
+            logarithm(0, 5)
 
     # Partner 1 Tests
     def test_multiply(self):
@@ -40,16 +43,20 @@ class TestCalculator(unittest.TestCase):
     def test_divide(self):
         self.assertAlmostEqual(div(2, 10), 5.0)
         self.assertAlmostEqual(div(4, 2), 0.5)
+        self.assertAlmostEqual(div(-2, 8), -4.0)
 
     def test_log_invalid_argument(self):
         with self.assertRaises(ValueError):
             logarithm(2, 0)
         with self.assertRaises(ValueError):
             logarithm(2, -5)
+        with self.assertRaises(ValueError):
+            logarithm(10, -1)
 
     def test_hypotenuse(self):
         self.assertAlmostEqual(hypotenuse(3, 4), 5.0)
         self.assertAlmostEqual(hypotenuse(-3, 4), 5.0)
+        self.assertAlmostEqual(hypotenuse(5, 12), 13.0)
 
     def test_sqrt(self):
         self.assertAlmostEqual(square_root(9), 3.0)
